@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		<title>Plutosite - {{t}}</title>
+	</head>
+	
+	<!-- Custom styles for stars -->
+	<style>
+		.star {
+			position: absolute;
+			background-color: white;
+			border-radius: 50%;
+			animation: twinkle var(--duration) infinite ease-in-out;
+			opacity: 0;
+		}
+
+		@keyframes twinkle {
+
+			0%,
+			100% {
+				opacity: 0;
+			}
+
+			50% {
+				opacity: var(--opacity);
+			}
+		}
+	</style>
+</head>
+
+<body class="bg-black min-h-screen overflow-hidden relative">
+	<!-- Stars will be generated here by JavaScript -->
+
+	<!-- Content Container -->
+	<div class="relative z-10 container mx-auto px-4 py-16 text-center">
+		<h1 class="text-5xl font-bold text-white mb-6">Welcome to the Cosmos</h1>
+		<p class="text-xl text-gray-300 max-w-2xl mx-auto">
+			This page features a dynamic twinkling stars background created with JavaScript and styled with Tailwind
+			CSS.
+		</p>
+		<button
+			class="mt-8 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white font-medium transition-colors">
+			Explore More
+		</button>
+	</div>
+
+	<!-- JavaScript for stars -->
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const container = document.body;
+			const starCount = 200;
+
+			// Create stars
+			for (let i = 0; i < starCount; i++) {
+				createStar();
+			}
+
+			function createStar() {
+				const star = document.createElement('div');
+				star.className = 'star';
+
+				// Random size between 1-3px
+				const size = Math.random() + Math.random();
+				star.style.width = `${size}px`;
+				star.style.height = `${size}px`;
+
+				// Random position
+				star.style.left = `${Math.random() * 100}vw`;
+				star.style.top = `${Math.random() * 100}vh`;
+
+				// Random animation duration (3-8 seconds)
+				const duration = Math.random() * 5 + 3;
+				star.style.setProperty('--duration', `${duration}s`);
+
+				// Random opacity (0.5-1)
+				const opacity = Math.random() * 0.5 + 0.5;
+				star.style.setProperty('--opacity', opacity);
+
+				// Random delay (0-5 seconds)
+				star.style.animationDelay = `${Math.random() * 5}s`;
+
+				container.appendChild(star);
+			}
+		});
+	</script>
+</body>
+
+</html>
