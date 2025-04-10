@@ -2,6 +2,10 @@
 <html>
 
 <head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Reggae+One&display=swap" rel="stylesheet">
+
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -10,6 +14,20 @@
 
 	<!-- Custom styles for stars and navigation -->
 	<style>
+		.f {
+			font-family: "Pixelify Sans", sans-serif;
+			font-optical-sizing: auto;
+			font-weight: <weight>;
+			font-style: normal;
+		}
+
+		.f2 {
+			font-family: "Pixelify Sans", sans-serif;
+			font-optical-sizing: auto;
+			font-weight: <weight>;
+			font-style: normal;
+		}
+
 		.star {
 			position: absolute;
 			background-color: white;
@@ -133,21 +151,17 @@
 				<!-- Centered Navigation -->
 				<div class="flex items-center space-x-5">
 					<a href="/"
-						class="nav-link text-gray-300 px-4 py-2 rounded-lg hover:text-white transition-all whitespace-nowrap">About Me</a>
+						class="nav-link text-gray-300 px-4 py-2 rounded-lg hover:text-white transition-all whitespace-nowrap f2">About Me</a>
 					<a href="/"
-						class="nav-link text-gray-300 px-4 py-2 rounded-lg hover:text-white transition-all whitespace-nowrap">Skills</a>
+						class="nav-link text-gray-300 px-4 py-2 rounded-lg hover:text-white transition-all whitespace-nowrap f2">Skills</a>
 					<a href="/"
-						class="nav-link text-gray-300 px-4 py-2 rounded-lg hover:text-white transition-all whitespace-nowrap">Projects</a>
-					<button
-						class="px-5 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-indigo-500/30">
-						Contact
-					</button>
+						class="nav-link text-gray-300 px-4 py-2 rounded-lg hover:text-white transition-all whitespace-nowrap f2">Projects</a>
 				</div>
 			</div>
 		</div>
 	</nav>
 	
-	<div class="relative min-h-[30vh] w-full top-16">
+	<div class="fixed top-0 min-h-[30vh] w-full pt-16">
 	
 		<!-- Aurora Layer 1 (Purple-Blue Blend) -->
 		<div class="absolute top-[-10%] left-[-25%] w-[150%] h-[70%]
@@ -172,13 +186,15 @@
 	
 	</div>
 
-	{% block content %}{% endblock %}
+	<div class="pt-36">
+		{% block content %}{% endblock %}
+	</div>
 
 	<!-- JavaScript for stars -->
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 			const container = document.body;
-			const starCount = 200;
+			const starCount = 500;
 
 			// Create stars
 			for (let i = 0; i < starCount; i++) {
@@ -195,8 +211,8 @@
 				star.style.height = `${size}px`;
 
 				// Random position
-				star.style.left = `${Math.random() * 100}vw`;
-				star.style.top = `${Math.random() * 100}vh`;
+				star.style.left = `${Math.random() * 100}%`;
+				star.style.top = `${Math.random() * 100}%`;
 
 				// Random animation duration (3-8 seconds)
 				const duration = Math.random() * 5 + 3;
