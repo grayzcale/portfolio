@@ -152,10 +152,10 @@
 				<div class="flex items-center space-x-5">
 					<a href="/"
 						class="nav-link text-gray-300 px-4 py-2 rounded-lg hover:text-white transition-all whitespace-nowrap f2">About Me</a>
-					<a href="/"
+					<a href="/skills"
 						class="nav-link text-gray-300 px-4 py-2 rounded-lg hover:text-white transition-all whitespace-nowrap f2">Skills</a>
-					<a href="/"
-						class="nav-link text-gray-300 px-4 py-2 rounded-lg hover:text-white transition-all whitespace-nowrap f2">Projects</a>
+					<a href="/projects"
+						class=" nav-link text-gray-300 px-4 py-2 rounded-lg hover:text-white transition-all whitespace-nowrap f2">Projects</a>
 				</div>
 			</div>
 		</div>
@@ -229,8 +229,14 @@
 			}
 
 			// Highlight menu item
-			const aboutLink = document.querySelector('.nav-link');
-			aboutLink.classList.add('active');
+			const currentPath = window.location.pathname;
+			const navLinks = document.querySelectorAll('.nav-link');
+
+			navLinks.forEach(link => {
+				if (link.getAttribute('href') === currentPath) {
+					link.classList.add('active');
+				}
+			});
 		});
 	</script>
 </body>
